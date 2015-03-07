@@ -1,0 +1,19 @@
+{
+    "name": "creativefocus",
+    "version": "0.1.0",
+    "authors": [
+        "Mladjo <mladen@milentijevic.com>"
+    ],
+    "dependencies": {
+        "bootstrap": "~3.3.2",
+        "font-awesome": "~4.3.0"
+    },
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

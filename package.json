@@ -1,0 +1,25 @@
+{
+    "name": "creativefocus",
+    "description": "HTML site template.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/mladjom/template",
+    "author": "Mladjo",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mladjom/template.git"
+    },
+    "engines": {
+        "node": ">=0.8.0",
+        "npm": ">=1.1.0"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "assemble": "~0.4.33",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-cssmin": "~0.10.0",
+        "grunt-contrib-uglify": "~0.5.1",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-contrib-copy": "~0.5.0",
+        "grunt-contrib-less": "~0.8.1"
+    }
+}

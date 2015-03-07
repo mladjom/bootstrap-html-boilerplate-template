@@ -1,0 +1,34 @@
+# =============================================
+# Build config
+# =============================================
+
+root:             dist
+dest:             <%= site.root %>
+assets:           <%= site.dest %>/assets
+
+# Data
+data:             src/_data
+
+# Templates
+templates:        src
+includes:         <%= site.templates %>/_includes/*.hbs
+layouts:          <%= site.templates %>/_layouts
+layout:           default.hbs
+pages:            <%= site.templates %>/pages
+
+# Extensions
+helpers:          <%= site.templates %>/helpers/*.js
+
+# Theme
+theme:            <%= site.templates %>/theme
+
+
+# =============================================
+# Site metadata
+# =============================================
+
+title:            <%= pkg.name %>
+description:      <%= pkg.description %>
+
+
+
