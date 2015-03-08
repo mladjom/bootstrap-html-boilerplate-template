@@ -57,9 +57,29 @@ module.exports = function (grunt) {
                 },
                 options: {
                     compress: true,
-                    sourceMap: true,
+                    sourceMap: false,
                     cleancss: true
                 }
+            }
+        },
+        autoprefixer: {
+            options: {
+                browsers: [
+                    "Android 2.3",
+                    "Android >= 4",
+                    "Chrome >= 20",
+                    "Firefox >= 24",
+                    "Explorer >= 8",
+                    "iOS >= 6",
+                    "Opera >= 12",
+                    "Safari >= 6"
+                ]
+            },
+            main: {
+                options: {
+                    map: false
+                },
+                src: '<%= site.assets %>/css/site.min.css'
             }
         },
         copy: {
@@ -98,6 +118,7 @@ module.exports = function (grunt) {
 
     // Load tasks
     grunt.loadNpmTasks('assemble');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -109,7 +130,8 @@ module.exports = function (grunt) {
         'copy',
         'less',
         'uglify',
-        'assemble'
+        'assemble',
+        'autoprefixer'
     ]);
     grunt.registerTask('dev', [
         'watch'
