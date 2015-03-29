@@ -33,17 +33,17 @@ module.exports = function (grunt) {
                 files: {
                     '<%= site.assets %>/js/plugins.min.js': [
                         '<%= bootstrap %>/js/transition.js',
-                        //'<%= bootstrap %>/js/alert.js',
+                        '<%= bootstrap %>/js/alert.js',
                         '<%= bootstrap %>/js/button.js',
-                        //'<%= bootstrap %>/js/carousel.js',
+                        '<%= bootstrap %>/js/carousel.js',
                         '<%= bootstrap %>/js/collapse.js',
                         '<%= bootstrap %>/js/dropdown.js',
-                        //'<%= bootstrap %>/js/modal.js',
+                        '<%= bootstrap %>/js/modal.js',
                         '<%= bootstrap %>/js/tooltip.js',
-                        //'<%= bootstrap %>/js/popover.js',
-                        //'<%= bootstrap %>/js/scrollspy.js',
-                        '<%= bootstrap %>/js/tab.js'
-                                //'<%= bootstrap %>/js/affix.js',
+                        '<%= bootstrap %>/js/popover.js',
+                        '<%= bootstrap %>/js/scrollspy.js',
+                        '<%= bootstrap %>/js/tab.js',
+                        '<%= bootstrap %>/js/affix.js'
                     ]
                 }
             }
@@ -85,7 +85,8 @@ module.exports = function (grunt) {
         copy: {
             main: {
                 files: [
-                    {expand: true, cwd: '<%= vendor %>/font-awesome', src: ['./fonts/*.*'], dest: '<%= site.assets %>/fonts/fontawesome'},
+                    {expand: true, cwd: '<%= vendor %>/font-awesome', src: ['./fonts/*.*'], dest: '<%= site.assets %>'},
+                    {expand: true, cwd: '<%= vendor %>/font-awesome/css', src: ['font-awesome.min.css'], dest: '<%= site.assets %>/css'},
                     {expand: true, cwd: '<%= vendor %>/jquery/dist', src: ['jquery.min.js'], dest: '<%= site.assets %>/js'}
 
                 ]
@@ -113,9 +114,18 @@ module.exports = function (grunt) {
                 '<%= site.assets %>/css/site.min.css',
                 '<%= site.assets %>/js/plugins.min.js'
             ]
+        },
+        imagemin: {// Task
+            dynamic: {
+                files: [{
+                        expand: true, // Enable dynamic expansion
+                        cwd: 'src/theme/img/', // Src matches are relative to this path
+                        src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
+                        dest: 'dist/assets/img/' // Destination path prefix
+                    }]
+            }
         }
     });
-
     // Load tasks
     grunt.loadNpmTasks('assemble');
     grunt.loadNpmTasks('grunt-autoprefixer');
@@ -124,6 +134,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     // Register tasks
     grunt.registerTask('default', [
         'clean',
@@ -131,7 +142,8 @@ module.exports = function (grunt) {
         'less',
         'uglify',
         'assemble',
-        'autoprefixer'
+        'autoprefixer',
+        'imagemin'
     ]);
     grunt.registerTask('dev', [
         'watch'
